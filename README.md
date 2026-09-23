@@ -1,1 +1,1 @@
-# monte-carlo-derivative-pricing
+# monte-carlo-option-pricing
