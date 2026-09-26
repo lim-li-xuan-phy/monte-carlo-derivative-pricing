@@ -13,8 +13,11 @@ The **accuracy** of Monte Carlo simulations in computing the prices and Greeks o
 # Motivation
 The equation describing the price $C$ of a call option proposed by Fischer Black and Myron Scholes in 1973, 
 $$C=S_t\Phi(d_1)-Ke^{-r(T-t)}\Phi(d_2)$$
+
 $$d_1=\frac{\ln(\frac{S_t}{K})+(r+\frac{\sigma^2}{2})(T-t)}{\sigma\sqrt{T-t}}$$
+
 $$d_2=d_1-\sigma\sqrt{T-t}$$
+\end{align*}$$
 where $S_t$ denotes the underlying asset price at time $t$, $\Phi$ the cumulative probability density of a standard normal variable, $K$ the strike price, $r$ the risk-free interest rate of the underlying asset, and $T$ the time at which the option expires, is widely used by traders to compute the risk-neutral value of an option as a baseline to manage the amount of risk they are willing to take. The assumptions that this equation was founded on allow a well-defined solution to the price of European options, but are not suitable for other kinds of options such as options that have path-dependent prices or can be exercised early. Monte Carlo simulations enable the calculation of the prices of a  much larger class of options compared to the deterministic Black-Scholes model, although adding some uncertainty to calculations due to randomness. 
 
 This project implemented a risk-neutral framework in the computation of option prices from the Black-Scholes model and Monte Carlo simulations. Interest rate $r$, volatility $\sigma$, and maturity duration $T$ were kept constant. Realistically, the parameters $r$ and $\sigma$ generally change as time $t$ progresses, affecting the underlying asset price $S_t$ and thereby leading to a different payoff than the value predicted in the risk-neutral case. Such a possibility of the option's actual returns being unequal to the forecasted returns is known as "risk". The level of risk associated with a financial derivative indicates the amount of potential financial loss that the buyer or seller could incur. Traders often use a set of measures called "Greeks" to quantify the risk of option contracts before their purchase. As a test of the accuracy of the Monte Carlo estimates, the Greek risk measures were computed and compared against the Black-Scholes analytical values.
